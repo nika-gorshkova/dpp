@@ -1,0 +1,9 @@
+import pandas as pd
+
+df = pd.read_csv("C:/Users/user/Downloads/ДПП Питон/All_Files/group_orders.csv", sep=",")
+df['order_date'] = df['order_date'].str.strip()
+df['order_date'] = pd.to_datetime(df['order_date'], errors='coerce')
+
+result = df.groupby('city')['total'].mean().round(2).reset_index(name='avg_total')
+print('2. Средняя сумма заказа по городам:')
+print(result.to_string(index=True))
