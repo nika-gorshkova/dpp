@@ -1,9 +1,5 @@
-import os
 import pandas as pd
 
-home_dir = os.path.expanduser("~")
-products_path = os.path.join(home_dir, "Downloads", "ДПП Питон", "All_Files", "products.csv")
-
-df = pd.read_csv(products_path, sep=",")
+df = pd.read_csv("All_Files/products.csv", sep=",", encoding="utf-8")
 filtered = df[(df['price'] < 500) & (df['volume_ml'] == 5.0)]
 print(filtered[['product_name', 'price']])

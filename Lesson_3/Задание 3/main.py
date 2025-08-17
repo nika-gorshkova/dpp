@@ -1,12 +1,7 @@
-import os
 import pandas as pd
 
-home_dir = os.path.expanduser("~")
-orders_path = os.path.join(home_dir, "Downloads", "ДПП Питон", "All_Files", "orders.csv")
-customers_path = os.path.join(home_dir, "Downloads", "ДПП Питон", "All_Files", "customers.csv")
-
-orders = pd.read_csv(orders_path, sep=",")
-customers = pd.read_csv(customers_path, sep=",")
+orders = pd.read_csv("All_Files/orders.csv", sep=",", encoding="utf-8")
+customers = pd.read_csv("All_Files/customers.csv", sep=",", encoding="utf-8")
 
 orders['order_date'] = orders['order_date'].str.strip()
 orders['order_date'] = pd.to_datetime(orders['order_date'])
